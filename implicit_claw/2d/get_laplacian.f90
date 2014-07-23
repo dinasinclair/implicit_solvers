@@ -10,6 +10,8 @@ subroutine get_laplacian(q, q_laplacian)
     double precision :: x_lower, y_lower, dx, dy
     common /claw_config/ mx, my, mbc, x_lower, y_lower, dx, dy, meqn
 
+    ! Fortran declaration of arrays doesn't require that you start dim from zero
+    ! Since we have mbc ghost cells, we start indexing at 1-mbc and end at mx + mbc
     double precision, dimension(1-mbc:mx+mbc,1-mbc:my+mbc), intent(in) :: q
     double precision, dimension(1-mbc:mx+mbc,1-mbc:my+mbc), intent(out) :: q_laplacian
 
